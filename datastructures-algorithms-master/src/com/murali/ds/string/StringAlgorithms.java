@@ -1,17 +1,18 @@
 package com.murali.ds.string;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class StringAlgorithms {
 
 	public static void main(String[] args) {
-		findAllInterleavingsString();
+		longestCommonSubstring();
 	}
 
 	public static void longestCommonSubstring() {
 
-		String first = "abcdefgh";
-		String second = "abcsdefgabfg";
+		String first = "abcde";
+		String second = "abc";
 
 		int maxlen = 0;
 		int endingIndex = first.length();
@@ -66,20 +67,18 @@ public class StringAlgorithms {
 	}
 	
 	public static void duplicateSubstringOfGivenLength() {
-		String str = "";
+		String str = "ThisThis";
 		int len = 3;
 		
-		int result = 0;
-	    int i = 0;
-	    HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-	    
-	    for(int j = 0; j < str.length(); j++) {
-	    	char c = str.charAt(j);
-	    	if(map.containsKey(c)) {
-	    		map.put(c, map.get(c)+1);
-	    	} else {
-	    		map.put(c, 1);
-	    	}
+		Map<String, Integer> map = new HashMap<>();
+	    int limit = str.length() - len + 1;
+	    for (int i = 0; i < limit; i++) {
+	        String sub = str.substring(i, i + len);
+	        Integer counter = map.get(sub);
+	        if (counter == null) {
+	            counter = 0;
+	        }
+	        map.put(sub, ++counter);
 	    }
 		
 	}

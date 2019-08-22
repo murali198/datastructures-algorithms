@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class NumberArrayAlogorithms {
 
 	public static void main(String[] args) {
-		dublicateElement();
+		roundOfArryElement();
 	}
 
 	public static void reverseArray() {
@@ -47,6 +47,22 @@ public class NumberArrayAlogorithms {
             else
                 System.out.print(Math.abs(arr[i]) + " "); 
         }
+	}
+	
+	public static void roundOfArryElement() {
+		int arr[] = {12, 2, 37, 10, 35, 61, 99};
+		for(int i = 0; i < arr.length; i++) {
+			int temp = arr[i];
+			int mod = temp % 10;
+			temp = temp - mod;
+			if(mod > 5)
+				temp = temp + 10;
+			arr[i] = temp;
+		}
+		
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
 	}
 
 }

@@ -5,9 +5,7 @@ import java.util.Arrays;
 public class NumberArrayAlogorithms {
 
 	public static void main(String[] args) {
-		findTripletWithSort();
-		System.out.println();
-		findTripletWithoutSort();
+		findSubArrayWithSumGivenNum();
 		
 	}
 
@@ -110,6 +108,21 @@ public class NumberArrayAlogorithms {
 					low++;
 					high--;
 				}
+			}
+		}
+	}
+	
+	public static void findSubArrayWithSumGivenNum() {
+		int arr[] = {4, 2, 2, 0, 1, 3, 1};
+		int sum = 5;
+		
+		for(int i = 0; i < arr.length; i++) {
+			int temp = 0;
+			
+			for(int j = i; j < arr.length; j++) {
+				temp += arr[j];
+				if(sum == temp)
+					System.out.println("array start index[ "+ i   +" ] end index [ "+ j + " ]");
 			}
 		}
 	}

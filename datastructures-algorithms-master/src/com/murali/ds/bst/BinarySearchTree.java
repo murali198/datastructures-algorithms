@@ -1,4 +1,4 @@
-package com.murali.ds.collection;
+package com.murali.ds.bst;
 
 public class BinarySearchTree {
 

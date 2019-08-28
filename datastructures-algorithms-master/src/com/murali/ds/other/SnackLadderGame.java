@@ -1,5 +1,6 @@
 package com.murali.ds.other;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -8,24 +9,24 @@ public class SnackLadderGame {
 	private static final boolean sixesThrowAgain = true;
 	private static Random rand = new Random();
 	
-	private static final Map<Integer, Integer> snl = Map.ofEntries(
-			Map.entry(4, 14),
-			Map.entry(9, 31),
-			Map.entry(17, 7),
-			Map.entry(20, 38),
-			Map.entry(28, 84),
-			Map.entry(40, 59),
-			Map.entry(51, 67),
-			Map.entry(54, 34),
-			Map.entry(62, 19),
-			Map.entry(63, 81),
-			Map.entry(64, 60),
-			Map.entry(71, 91),
-			Map.entry(87, 24),
-			Map.entry(93, 73),
-			Map.entry(95, 75),
-			Map.entry(99, 78)
-	);
+	private static final Map<Integer, Integer> snl = new HashMap(){{
+		put(4, 14);
+		put(9, 31);
+		put(17, 7);
+		put(20, 38);
+		put(28, 84);
+		put(40, 59);
+		put(51, 67);
+		put(54, 34);
+		put(62, 19);
+		put(63, 81);
+		put(64, 60);
+		put(71, 91);
+		put(87, 24);
+		put(93, 73);
+		put(95, 75);
+		put(99, 78);
+	}};
 
 	public static void play() {
 		// three players starting on square one
@@ -57,14 +58,16 @@ public class SnackLadderGame {
 				if (square2 == 100) 
 					return 100;
 				
-				Integer next = snl.getOrDefault(square2, square2);
-				if (square2 < next) {
-					System.out.printf("Yay! Landed on a ladder. Climb up to %d.\n", next);
-					if (next == 100) return 100;
-					square2 = next;
-				} else if (square2 > next) {
-					System.out.printf("Oops! Landed on a snake. Slither down to %d.\n", next);
-					square2 = next;
+				if(snl.containsKey(square2)) {
+					Integer next =  snl.get(square2);
+					if (square2 < next) {
+						System.out.printf("Yay! Landed on a ladder. Climb up to %d.\n", next);
+						if (next == 100) return 100;
+						square2 = next;
+					} else if (square2 > next) {
+						System.out.printf("Oops! Landed on a snake. Slither down to %d.\n", next);
+						square2 = next;
+					}
 				}
 			}
 			

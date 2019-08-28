@@ -6,7 +6,7 @@ import java.util.Map;
 public class StringAlgorithms {
 
 	public static void main(String[] args) {
-		longestCommonSubstring();
+		printinXFormate();
 	}
 
 	public static void longestCommonSubstring() {
@@ -81,5 +81,18 @@ public class StringAlgorithms {
 	        map.put(sub, ++counter);
 	    }
 		
+	}
+	
+	public static void printinXFormate() {
+		String str = "123456";
+		for(int i = 0; i < str.length(); i++) {
+			for(int j = 0; j < str.length(); j++) {
+				if(j == i || (j == str.length() - 1 - i))
+					System.out.print(str.charAt(j));
+				else
+					System.out.print(" ");
+			}
+			System.out.println("");
+		}
 	}
 }
